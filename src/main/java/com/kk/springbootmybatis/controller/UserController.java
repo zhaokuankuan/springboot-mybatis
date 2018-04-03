@@ -2,6 +2,8 @@ package com.kk.springbootmybatis.controller;
 
 import com.kk.springbootmybatis.common.Page;
 import com.kk.springbootmybatis.dao.UserMapperDao;
+import com.kk.springbootmybatis.dao.one.UserOneMapperDao;
+import com.kk.springbootmybatis.dao.two.UserTwoMapperDao;
 import com.kk.springbootmybatis.domain.User;
 import com.kk.springbootmybatis.parm.UserParm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,16 @@ import java.util.*;
 public class UserController {
 
     @Autowired
-    private UserMapperDao userMapperDao;
+    private UserTwoMapperDao userTwoMapperDao2;
+
+    @Autowired
+    private UserOneMapperDao userTwoMapperDao1;
 
     //新增的方法
     @RequestMapping(value = "/addUser",method = {RequestMethod.GET,RequestMethod.POST})
     public Object addUser(User user, HttpServletRequest request, HttpServletResponse httpServletResponse){
         Map<String,Object> map = new HashMap<>();
-        userMapperDao.insert(user);
+        userTwoMapperDao1.insert(user);
         map.put("新增成功！",user.toString());
         return map;
     }
@@ -36,7 +41,7 @@ public class UserController {
     //删除的方法
     @RequestMapping(value = "/deleteById",method = {RequestMethod.GET,RequestMethod.POST})
     public Object deleteById(long id){
-        userMapperDao.delete(id);
+        userTwoMapperDao1.delete(id);
         return "删除成功！";
     }
 
@@ -44,7 +49,7 @@ public class UserController {
     @RequestMapping(value = "/updateUser",method = {RequestMethod.GET,RequestMethod.POST})
     public Object updateUser(User user){
         Map<String,Object> map = new HashMap<>();
-        userMapperDao.update(user);
+        userTwoMapperDao1.update(user);
         map.put("修改成功！",user);
         return map;
     }
@@ -52,22 +57,22 @@ public class UserController {
     //根据id查询user的方法
     @RequestMapping(value = "/getUserById",method = {RequestMethod.GET,RequestMethod.POST})
     public User getUserById(long id){
-        User user = userMapperDao.getOne(id);
+        User user = userTwoMapperDao2.getOne(id);
         return  user;
     }
 
     //全查所有的User
     @RequestMapping(value = "/getUserAll",method = {RequestMethod.POST,RequestMethod.GET})
     public List<User> getUserAll(){
-        List<User>  list = userMapperDao.getAll();
+        List<User>  list = userTwoMapperDao2.getAll();
         return  list;
     }
 
 
     @RequestMapping("/getList")
     public Page<User> getList(UserParm userParam) {
-        List<User> users=userMapperDao.getList(userParam);
-        long count=userMapperDao.getCount(userParam);
+        List<User> users=userTwoMapperDao2.getList(userParam);
+        long count=userTwoMapperDao2.getCount(userParam);
         Page page = new Page(userParam,count,users);
         return page;
     }

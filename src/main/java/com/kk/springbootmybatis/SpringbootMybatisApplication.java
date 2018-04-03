@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //mapperScan扫描的是所有的dao
-@MapperScan("com.kk.springbootmybatis.dao")
+//@MapperScan("com.kk.springbootmybatis.dao")
 public class SpringbootMybatisApplication {
 
 	public static void main(String[] args) {
