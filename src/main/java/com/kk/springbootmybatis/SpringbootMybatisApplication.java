@@ -3,8 +3,10 @@ package com.kk.springbootmybatis;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 //mapperScan扫描的是所有的dao
 //@MapperScan("com.kk.springbootmybatis.dao")
 public class SpringbootMybatisApplication {
