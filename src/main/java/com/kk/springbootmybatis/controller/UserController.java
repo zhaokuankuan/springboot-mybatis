@@ -1,18 +1,13 @@
 package com.kk.springbootmybatis.controller;
 
 import com.kk.springbootmybatis.common.Page;
-import com.kk.springbootmybatis.dao.UserMapperDao;
-import com.kk.springbootmybatis.dao.one.UserOneMapperDao;
-import com.kk.springbootmybatis.dao.two.UserTwoMapperDao;
+import com.kk.springbootmybatis.dao.one.UserMapperDao;
 import com.kk.springbootmybatis.domain.User;
 import com.kk.springbootmybatis.parm.UserParm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
@@ -24,10 +19,10 @@ import java.util.*;
 public class UserController {
 
     @Autowired
-    private UserTwoMapperDao userTwoMapperDao2;
+    private UserMapperDao userTwoMapperDao2;
 
     @Autowired
-    private UserOneMapperDao userTwoMapperDao1;
+    private UserMapperDao userTwoMapperDao1;
 
     //新增的方法
     @RequestMapping(value = "/addUser",method = {RequestMethod.GET,RequestMethod.POST})
