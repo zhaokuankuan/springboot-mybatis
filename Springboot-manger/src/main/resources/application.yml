@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /manager
+#配置 mybatis-config.xml 路径，mybatis-config.xml 中配置 MyBatis 基础属性
+mybatis:
+  mapper-locations: mapper/userMapper.xml
+  type-aliases-package: com.kk.Springbootmanger.domain
+#配置sql的打印
+  logging:
+      level:
+        com.kk.Springbootmanger.dao: DEBUG //包路径为mapper文件包路径
+
+
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
